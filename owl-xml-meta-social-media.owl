@@ -1,0 +1,800 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl">
+    <Prefix name="" IRI="http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialMedia"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#CONTENT"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#HAS"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#INFLUENCE"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#PESSOAL"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#PROFESSIONAL"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#RELATIONSHIP"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#PersonID"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Surname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Username"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FACE_P4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#INST_P1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#INST_P2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#INST_P3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#INST_P4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#INST_P5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LINK_P1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LINK_P2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#P1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#P2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#P3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#P4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#P5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PINT_P1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PINT_P2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TICK_P3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TICK_P4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TICK_P5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TWIT_P1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YOUT_P1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YOUT_P2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YOUT_P3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YOUT_P4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YOUT_P5"/>
+    </Declaration>
+    <DisjointClasses>
+        <Class IRI="#Person"/>
+        <Class IRI="#SocialMedia"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#FACE_P4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#INST_P1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#INST_P2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#INST_P3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#INST_P4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#INST_P5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#LINK_P1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#LINK_P2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#P1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#P2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#P3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#P4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#P5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#PINT_P1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#PINT_P2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#TICK_P3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#TICK_P4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#TICK_P5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#TWIT_P1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#YOUT_P1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#YOUT_P2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#YOUT_P3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#YOUT_P4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SocialMedia"/>
+        <NamedIndividual IRI="#YOUT_P5"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <NamedIndividual IRI="#INST_P1"/>
+        <NamedIndividual IRI="#INST_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <NamedIndividual IRI="#INST_P1"/>
+        <NamedIndividual IRI="#INST_P3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <NamedIndividual IRI="#INST_P1"/>
+        <NamedIndividual IRI="#INST_P4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <NamedIndividual IRI="#INST_P1"/>
+        <NamedIndividual IRI="#INST_P5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <NamedIndividual IRI="#INST_P2"/>
+        <NamedIndividual IRI="#INST_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#INFLUENCE"/>
+        <NamedIndividual IRI="#INST_P3"/>
+        <NamedIndividual IRI="#INST_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <NamedIndividual IRI="#INST_P3"/>
+        <NamedIndividual IRI="#INST_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#INFLUENCE"/>
+        <NamedIndividual IRI="#INST_P4"/>
+        <NamedIndividual IRI="#INST_P3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#INFLUENCE"/>
+        <NamedIndividual IRI="#INST_P4"/>
+        <NamedIndividual IRI="#INST_P5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <NamedIndividual IRI="#INST_P4"/>
+        <NamedIndividual IRI="#INST_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#INFLUENCE"/>
+        <NamedIndividual IRI="#INST_P5"/>
+        <NamedIndividual IRI="#INST_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#INFLUENCE"/>
+        <NamedIndividual IRI="#INST_P5"/>
+        <NamedIndividual IRI="#INST_P3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <NamedIndividual IRI="#INST_P5"/>
+        <NamedIndividual IRI="#INST_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PROFESSIONAL"/>
+        <NamedIndividual IRI="#LINK_P1"/>
+        <NamedIndividual IRI="#LINK_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#PROFESSIONAL"/>
+        <NamedIndividual IRI="#LINK_P2"/>
+        <NamedIndividual IRI="#LINK_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P1"/>
+        <NamedIndividual IRI="#INST_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P1"/>
+        <NamedIndividual IRI="#LINK_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P1"/>
+        <NamedIndividual IRI="#PINT_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P1"/>
+        <NamedIndividual IRI="#TWIT_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P1"/>
+        <NamedIndividual IRI="#YOUT_P1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P2"/>
+        <NamedIndividual IRI="#INST_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P2"/>
+        <NamedIndividual IRI="#LINK_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P2"/>
+        <NamedIndividual IRI="#PINT_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P2"/>
+        <NamedIndividual IRI="#YOUT_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P3"/>
+        <NamedIndividual IRI="#INST_P3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P3"/>
+        <NamedIndividual IRI="#TICK_P3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P3"/>
+        <NamedIndividual IRI="#YOUT_P3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P4"/>
+        <NamedIndividual IRI="#FACE_P4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P4"/>
+        <NamedIndividual IRI="#INST_P4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P4"/>
+        <NamedIndividual IRI="#TICK_P4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P4"/>
+        <NamedIndividual IRI="#YOUT_P4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P5"/>
+        <NamedIndividual IRI="#INST_P5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P5"/>
+        <NamedIndividual IRI="#TICK_P5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HAS"/>
+        <NamedIndividual IRI="#P5"/>
+        <NamedIndividual IRI="#YOUT_P5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#CONTENT"/>
+        <NamedIndividual IRI="#PINT_P1"/>
+        <NamedIndividual IRI="#PINT_P2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#CONTENT"/>
+        <NamedIndividual IRI="#TICK_P3"/>
+        <NamedIndividual IRI="#TICK_P3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#CONTENT"/>
+        <NamedIndividual IRI="#TICK_P4"/>
+        <NamedIndividual IRI="#TICK_P3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#CONTENT"/>
+        <NamedIndividual IRI="#TICK_P5"/>
+        <NamedIndividual IRI="#TICK_P4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#CONTENT"/>
+        <NamedIndividual IRI="#YOUT_P1"/>
+        <NamedIndividual IRI="#YOUT_P4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#CONTENT"/>
+        <NamedIndividual IRI="#YOUT_P2"/>
+        <NamedIndividual IRI="#YOUT_P4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#CONTENT"/>
+        <NamedIndividual IRI="#YOUT_P4"/>
+        <NamedIndividual IRI="#YOUT_P5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#CONTENT"/>
+        <NamedIndividual IRI="#YOUT_P5"/>
+        <NamedIndividual IRI="#YOUT_P4"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#FACE_P4"/>
+        <Literal>Facebook</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#FACE_P4"/>
+        <Literal>CiceroFacebook</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#INST_P1"/>
+        <Literal>Instagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#INST_P1"/>
+        <Literal>LeoInstagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#INST_P2"/>
+        <Literal>Instagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#INST_P2"/>
+        <Literal>AliceInstagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#INST_P3"/>
+        <Literal>Instagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#INST_P3"/>
+        <Literal>LauraInstagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#INST_P4"/>
+        <Literal>Instagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#INST_P4"/>
+        <Literal>CiceroInstagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#INST_P5"/>
+        <Literal>Instagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#INST_P5"/>
+        <Literal>ArturInstagram</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#LINK_P1"/>
+        <Literal>LinkedIn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#LINK_P1"/>
+        <Literal>LeoLinkedIn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#LINK_P2"/>
+        <Literal>LinkedIn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#LINK_P2"/>
+        <Literal>AliceLinkedIn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#P1"/>
+        <Literal>Leonardo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#PersonID"/>
+        <NamedIndividual IRI="#P1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Surname"/>
+        <NamedIndividual IRI="#P1"/>
+        <Literal>Leite</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#P2"/>
+        <Literal>Alice</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#PersonID"/>
+        <NamedIndividual IRI="#P2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Surname"/>
+        <NamedIndividual IRI="#P2"/>
+        <Literal>Leite</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#P3"/>
+        <Literal>Laura</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#PersonID"/>
+        <NamedIndividual IRI="#P3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Surname"/>
+        <NamedIndividual IRI="#P3"/>
+        <Literal>Leite</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#P4"/>
+        <Literal>Cicero</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#PersonID"/>
+        <NamedIndividual IRI="#P4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Surname"/>
+        <NamedIndividual IRI="#P4"/>
+        <Literal>Cazita</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#P5"/>
+        <Literal>Artur</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#PersonID"/>
+        <NamedIndividual IRI="#P5"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Surname"/>
+        <NamedIndividual IRI="#P5"/>
+        <Literal>Leite</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#PINT_P1"/>
+        <Literal>Pinterest</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#PINT_P1"/>
+        <Literal>LeoPinterest</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#PINT_P2"/>
+        <Literal>Pinterest</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#PINT_P2"/>
+        <Literal>AlicePinterest</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#TICK_P3"/>
+        <Literal>TickTok</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#TICK_P3"/>
+        <Literal>LauraTickTok</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#TICK_P4"/>
+        <Literal>TickTok</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#TICK_P4"/>
+        <Literal>LauraTickTok</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#TICK_P5"/>
+        <Literal>TickTok</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#TICK_P5"/>
+        <Literal>LauraTickTok</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#TWIT_P1"/>
+        <Literal>Twitter</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#TWIT_P1"/>
+        <Literal>LeoTwitter</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#YOUT_P1"/>
+        <Literal>Youtube</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#YOUT_P1"/>
+        <Literal>LeoYoutube</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#YOUT_P2"/>
+        <Literal>Youtube</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#YOUT_P2"/>
+        <Literal>AliceYoutube</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#YOUT_P3"/>
+        <Literal>Youtube</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#YOUT_P3"/>
+        <Literal>LauraYoutube</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#YOUT_P4"/>
+        <Literal>Youtube</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#YOUT_P4"/>
+        <Literal>CiceroFacebook</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#YOUT_P5"/>
+        <Literal>Youtube</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Username"/>
+        <NamedIndividual IRI="#YOUT_P5"/>
+        <Literal>ArturYoutube</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#CONTENT"/>
+        <ObjectProperty IRI="#RELATIONSHIP"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#INFLUENCE"/>
+        <ObjectProperty IRI="#RELATIONSHIP"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#PESSOAL"/>
+        <ObjectProperty IRI="#RELATIONSHIP"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#PROFESSIONAL"/>
+        <ObjectProperty IRI="#RELATIONSHIP"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#HAS"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#HAS"/>
+    </InverseFunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#CONTENT"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#PESSOAL"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#PROFESSIONAL"/>
+    </SymmetricObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#CONTENT"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#HAS"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#INFLUENCE"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#PESSOAL"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#PROFESSIONAL"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#RELATIONSHIP"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#HAS"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#RELATIONSHIP"/>
+        <Class IRI="#SocialMedia"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#HAS"/>
+        <Class IRI="#SocialMedia"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#RELATIONSHIP"/>
+        <Class IRI="#SocialMedia"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#PersonID"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Surname"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Username"/>
+        <Class IRI="#SocialMedia"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#Name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#PersonID"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Surname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Username"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
