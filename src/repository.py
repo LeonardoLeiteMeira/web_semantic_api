@@ -10,16 +10,16 @@ class Repository:
 
     async def get_all_connections_from_user(self,person_name:str, connection_type:str|None = None, social_media:str|None = None):
         return [
-            {"name":"Alice", "socialMedia":"Instagram", "Username":"Alice_Instagram"},
-            {"name":"Cicero", "socialMedia":"Instagram", "Username":"Cicero_Instagram"},
-            {"name":"Laura", "socialMedia":"Youtube", "Username":"Laura_Youtube"},
-            {"name":"Artur", "socialMedia":"Tiktok", "Username":"Artur_Tiktok"},
+            {"name":"Alice", "social_media":"Instagram", "username":"Alice_Instagram"},
+            {"name":"Cicero", "social_media":"Instagram", "username":"Cicero_Instagram"},
+            {"name":"Laura", "social_media":"Youtube", "username":"Laura_Youtube"},
+            {"name":"Artur", "social_media":"Tiktok", "username":"Artur_Tiktok"},
         ]
 
     async def get_possible_connections(self,person_name:str, connection_type:str|None = None, social_media:str|None = None):
         return [
-            {"name":"Laura", "socialMedia":"Youtube", "Username":"Laura_Youtube"},
-            {"name":"Alice", "socialMedia":"Instagram", "Username":"Alice_Instagram"},
+            {"name":"Laura", "social_media":"Youtube", "username":"Laura_Youtube"},
+            {"name":"Alice", "social_media":"Instagram", "username":"Alice_Instagram"},
         ]
 
     async def get_influence_score(self,person_name:str,social_media:str,username_of_subgraph:str):
