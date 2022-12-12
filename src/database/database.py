@@ -3,7 +3,6 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 class Database(metaclass=Singleton):
     def __init__(self):
-        self.client = "lib('localhost', 000)"
         self.sparql = SPARQLWrapper("http://localhost:3030/release/sparql")
     
     async def get_socialmedias_from(self, user):
