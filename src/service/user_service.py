@@ -1,9 +1,9 @@
-from repository import Repository
+from repository.user_repository import UserRepository
 
 # class to do some convertions and apply business logic on repository data
-class Service:
+class UserService:
     def __init__(self):
-        self.repository = Repository()
+        self.repository = UserRepository()
 
     async def get_socialmedias_from_user(self, person_name:str):
         return await self.repository.get_socialmedias_from_user(person_name)

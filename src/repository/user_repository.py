@@ -1,6 +1,9 @@
-from database.database import Database
+# from database import Database
 
-class Repository:
+from repository.database import Database
+
+
+class UserRepository:
     def __init__(self):
         self.database = Database()
 
