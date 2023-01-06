@@ -1,7 +1,7 @@
 from models.singleton import Singleton
 from SPARQLWrapper import SPARQLWrapper, JSON
 
-class Database(metaclass=Singleton):
+class GraphDatabase(metaclass=Singleton):
     def __init__(self):
         self.sparql = SPARQLWrapper("http://localhost:3030/release/sparql")
     

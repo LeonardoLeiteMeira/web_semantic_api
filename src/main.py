@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from controllers.user_controller import user_router
+from controllers.auth_controller import auth_router
 
 app = FastAPI()
 
@@ -15,9 +16,10 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"Status":"Ok"}
+    return {"Status":"Ok", "info":"Access /docs"}
 
 app.include_router(user_router, prefix="/user")
+app.include_router(auth_router, prefix="/auth")
 
 
 if __name__ == "__main__":

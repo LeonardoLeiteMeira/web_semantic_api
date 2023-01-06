@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 fastapi = {extras = ["all"], version = "*"}
 sparqlwrapper = "*"
+install = "*"
+python-jose = {extras = ["cryptography"], version = "*"}
+passlib = {extras = ["bcrypt"], version = "*"}
 
 [dev-packages]
 
