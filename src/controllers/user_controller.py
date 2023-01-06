@@ -10,10 +10,6 @@ user_router = APIRouter()
 
 user_service = UserService()
 
-@user_router.post("/create/")
-async def create_new_user():
-    return {"status": "Not Implemented"}
-
 @user_router.get("/socialmedias/{id}", response_model=list[str])
 async def get_social_medias(id:str):
     return await user_service.get_socialmedias_from_user(id)
