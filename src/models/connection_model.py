@@ -2,6 +2,6 @@ from pydantic import BaseModel
 
 
 class ConnectionModel(BaseModel):
-    name:str
+    id:int
     social_media:str
-    username:str
+    email:str

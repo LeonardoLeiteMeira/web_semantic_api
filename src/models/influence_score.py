@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 
-
 class InfluenceScore(BaseModel):
-    user:str
+    user:int
     influence_score:int|float

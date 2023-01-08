@@ -3,7 +3,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 class GraphDatabase(metaclass=Singleton):
     def __init__(self):
-        self.sparql = SPARQLWrapper("http://localhost:3030/release/sparql")
+        self.sparql = SPARQLWrapper("http://localhost:3030/meta-social-media/sparql")
     
     async def get_socialmedias_from(self, user_id:int):
         stringQuery = """
@@ -11,88 +11,106 @@ class GraphDatabase(metaclass=Singleton):
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX owl: <http://www.w3.org/2002/07/owl#>
-            PREFIX : <http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl#>
+            PREFIX : <http://www.semanticweb.org/carlos/ontologies/2023/0/meta-social-media#>
 
             SELECT ?socialName
-                WHERE {
+            WHERE {
                 ?subject rdf:type :User;
                         :email ?name ;
                         :id ?id ;
                         :IsOwnerOf ?social .
                 ?social :name ?socialName
-                FILTER (?id = '""" +user_id+ """')
-                }
+                FILTER (?id = """+user_id+""")
             }
         """
-        
         results = self._runQuery(stringQuery)
         return self._getSocialMedias(results["results"]["bindings"])
     
     async def get_connections_from(self, user_id:int, type:str|None):
-
+       
         if type == None:
-            type = "Relationship"
+            stringQuery = """
+                PREFIX my: <http://www.mobile.com/model/>
+                PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                PREFIX : <http://www.semanticweb.org/carlos/ontologies/2023/0/meta-social-media#>
 
-        stringQuery = """
-            PREFIX my: <http://www.mobile.com/model/>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX owl: <http://www.w3.org/2002/07/owl#>
-            PREFIX : <http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl#>
-
-            SELECT DISTINCT ?email ?id ?idConnection ?connectionEmail ?type
+                SELECT DISTINCT ?email ?id ?idConnection ?connectionEmail ?socialMediaName
                 WHERE {
                 ?subject rdf:type :User;
                         :email ?email ;
                         :id ?id ;
                         :HasRelationship ?relations .
                 ?relations :With ?connection .
+                ?relations :ConnectedOn ?socialMedia .
+                ?socialMedia :name ?socialMediaName .
                 ?relations rdf:type ?type .
                 ?connection :id ?idConnection ;
                             :email ?connectionEmail
-                FILTER (?id = """+user_id+""" && ?type = :"""+type+""")
+                FILTER (?id = """+str(user_id)+""")
                 }
-        """
+            """
+        else:
+            stringQuery = """
+                PREFIX my: <http://www.mobile.com/model/>
+                PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                PREFIX : <http://www.semanticweb.org/carlos/ontologies/2023/0/meta-social-media#>
+
+                SELECT DISTINCT ?email ?id ?idConnection ?connectionEmail ?socialMediaName
+                WHERE {
+                ?subject rdf:type :User;
+                        :email ?email ;
+                        :id ?id ;
+                        :HasRelationship ?relations .
+                ?relations :With ?connection .
+                ?relations :ConnectedOn ?socialMedia .
+                ?socialMedia :name ?socialMediaName .
+                ?relations rdf:type ?type .
+                ?connection :id ?idConnection ;
+                            :email ?connectionEmail
+                FILTER (?id = """+str(user_id)+""" && ?type = :"""+type+""")
+                }
+            """
         
         results = self._runQuery(stringQuery)
         response = self._getConnections(results["results"]["bindings"])
         return response
 
-    async def get_recommends_from(self, user, connection, socialMedia):
-        connectionString = "?type rdfs:subPropertyOf* :RELATIONSHIP ."
-        filterString = "?name = '"+user+"' && !isBlank(?recommends)"
-
-        if(socialMedia != None):
-            filterString = filterString + " && ?connectionSocialMedia = '"+socialMedia+"'"
-        
-        if(connection != None):
-            connectionString = "?type rdfs:subPropertyOf* :"+connection+" ."
-
+    async def get_recommends_from(self, user_id,):
         stringQuery = """
             PREFIX my: <http://www.mobile.com/model/>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX owl: <http://www.w3.org/2002/07/owl#>
-            PREFIX : <http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl#>
+            PREFIX : <http://www.semanticweb.org/carlos/ontologies/2023/0/meta-social-media#>
 
-            SELECT DISTINCT ?recommendName ?socialMedia ?username
-            WHERE {
-                ?subject rdf:type :Person;
-                :Name ?name ;
-                :HAS	?social;
+            SELECT DISTINCT ?email ?id ?userId ?connectionEmail ?socialMediaName
+                WHERE { 
+                ?user rdf:type :User ;
+                    :email ?email ;
+                    :id ?id ;
+                    :HasRelationship ?relations .
+                ?user :IsOwnerOf ?medias .
+                ?relations :With ?Users ;
+                            :ConnectedOn ?socialMedia .
+                ?Users :email ?connectionEmail.
+                ?Users :id ?userId .
                 OPTIONAL {
-                    """+connectionString+"""
-                    ?social ?type ?conections .
-                    ?social	?type ?recommends .
-                    ?recommends :Name ?socialMedia ;
-                        :Username ?username .
-                    ?user :HAS ?recommends ;
-                        :Name ?recommendName .
-                    FILTER NOT EXISTS {?recommends ?type ?social}
-                } 
-                FILTER ("""+filterString+""")
+                    ?Users :HasRelationship ?UsersRelations .
+                    ?UsersRelations :With ?UserUsers ;
+                            :ConnectedOn ?UserSocialMedia .
+                    ?UserUsers :IsOwnerOf ?UserMedias .
+                    ?UserUsers :email ?UserEmail .
+                    ?UserMedias :name ?socialMediaName
+                    FILTER(?UserMedias = ?medias && ?UserUsers != ?user)
+                }
+                FILTER(?id =  """+str(user_id)+""" && !isBlank(?UserMedias))
             }
         """
         results = self._runQuery(stringQuery)
@@ -100,22 +118,20 @@ class GraphDatabase(metaclass=Singleton):
         return response
 
     async def get_influence_level_from(self, user_id:int):
-
         stringQuery = """
             PREFIX my: <http://www.mobile.com/model/>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX owl: <http://www.w3.org/2002/07/owl#>
-            PREFIX : <http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl#>
+            PREFIX : <http://www.semanticweb.org/carlos/ontologies/2023/0/meta-social-media#>
 
-
-        SELECT (count ( distinct ?relations ) AS ?level)
+            SELECT (count ( distinct ?relations ) AS ?level)
             WHERE {
                 ?relations rdf:type :Influence .
                 ?relations :With ?user .
                 ?user :id ?id .
-                FILTER (?id = """+user_id+""")
+                FILTER (?id = """+str(user_id)+""")
             }GROUP BY ?id
         """
         results = self._runQuery(stringQuery)
@@ -137,19 +153,20 @@ class GraphDatabase(metaclass=Singleton):
         response = []
         for result in results:
             response.append({
-                "name" : result["userConnectedName"]["value"],
-                "social_media" : result["connectionSocialMedia"]["value"],
-                "username" : result["userConnectedUsername"]["value"]
+                "id" : result["idConnection"]["value"],
+                "social_media" : result["socialMediaName"]["value"],
+                "email" : result["connectionEmail"]["value"]
             })
         return response
 
     def _getRecommendations(self, results):
         response = []
+        
         for result in results:
             response.append({
-                "name" : result["recommendName"]["value"],
-                "social_media" : result["socialMedia"]["value"],
-                "username" : result["username"]["value"]
+                "id" : result["userId"]["value"],
+                "social_media" : result["socialMediaName"]["value"],
+                "email" : result["connectionEmail"]["value"]
             })
         return response
     
