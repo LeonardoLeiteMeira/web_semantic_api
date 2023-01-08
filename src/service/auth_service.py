@@ -19,8 +19,9 @@ class AuthService:
     def hash_password(self,password:str):
         return self.pwd_context.hash(password)
 
-    def create_bearer_token(self,payload_data:dict):
-        data_to_enconde = payload_data.copy()
+    def create_bearer_token(self,user_id:int, data:dict):
+        data_to_enconde = data.copy()
         expire = datetime.now()+timedelta(hours=1)
         data_to_enconde["exp"] = expire
+        data_to_enconde["sub"] = str(user_id)
         return jwt.encode(claims=data_to_enconde,key=self.SECRET_KEY,algorithm=self.ALGORITHM)

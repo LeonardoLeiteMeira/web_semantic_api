@@ -32,4 +32,5 @@ async def create_user(new_user:CreateUser):
 
 @user_router.get("/getuser")
 async def get_test(user: User = Depends(auth_middleware)):
-    return await user_service.get_user_by_email(user.email)
+    user = await user_service.get_user_by_id(user.id)
+    return user

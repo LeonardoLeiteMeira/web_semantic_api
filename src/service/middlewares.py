@@ -12,7 +12,7 @@ async def auth_middleware(token:str = Depends(auth_service.o_auth2_password_bear
     try:
         payload = jwt.decode(token,key=auth_service.SECRET_KEY,algorithms=auth_service.ALGORITHM)
         token_payload = TokenPayload(**payload)
-        return await user_service.get_user_by_email(token_payload.sub)
+        return await user_service.get_user_by_id(int(token_payload.sub))
     except JWSError as jwt_err:
         print(jwt_err)
         raise Unauthorized()

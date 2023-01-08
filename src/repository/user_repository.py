@@ -1,7 +1,7 @@
 from models.user_models import UserDB
 from repository.graph_database import GraphDatabase
 from repository.sql_database import SqlDatabase
-
+import random
 
 class UserRepository:
     def __init__(self):
@@ -21,10 +21,22 @@ class UserRepository:
         return await self.graph_database.get_influence_level_from(person_name, social_media)
 
     async def save_user(self, user:UserDB):
-        self.sql_database.data[user.email] = user.__dict__
+        user.id = random.randint(0,900)
+        self.sql_database.data[user.id] = user.__dict__
+
+    async def get_user_by_id(self, id:int)->dict|None:
+        try:
+            return self.sql_database.data[id]
+        except:
+            return None
 
     async def get_user_by_email(self, email:str)->dict|None:
         try:
-            return self.sql_database.data[email]
+            data = self.sql_database.data
+            keys = data.keys()
+            for key in keys:
+                user = data[key]
+                if user["email"] == email:
+                    return user
         except:
             return None

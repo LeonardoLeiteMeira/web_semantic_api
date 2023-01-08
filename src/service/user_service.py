@@ -27,30 +27,30 @@ class UserService:
         await self.repository.save_user(user_db)
         return await self.validate_login(new_user.email,new_user.password)
 
-    async def get_user_by_email(self,user_email:str)-> User|None:
+    async def get_user_by_id(self,user_id:int)-> User|None:
         try:
-            user_dict = await self.repository.get_user_by_email(user_email)
+            user_dict = await self.repository.get_user_by_id(user_id)
             if user_dict:
                 return User(**user_dict)
         except Exception as er:
             print(er)
             return None
 
-    async def service_get_user(self, user_email:str):
+    async def get_user_by_email(self, user_email:str):
         user_dict = await self.repository.get_user_by_email(user_email)
         if user_dict:
             user_db = UserDB(**user_dict)
             if not user_db.disabled:
-                return UserDB(**user_dict)
+                return user_db
             else:
                 raise IncorrectLogin("User is diabled")
         else:
             raise IncorrectLogin()
 
     async def validate_login(self, user_email:str, password:str):
-        user_db = await self.service_get_user(user_email)
+        user_db = await self.get_user_by_email(user_email)
         if self.auth_service.verify_password(password, user_db.hashed_password):
-            token = self.auth_service.create_bearer_token({"sub":user_db.email})
-            return UserAuth(email=user_db.email,name=user_db.name,disabled=user_db.disabled,token=token, token_type="bearer")
+            token = self.auth_service.create_bearer_token(user_db.id,{})
+            return UserAuth(**user_db.__dict__ ,token_type="bearer",token=token)
         else:
             raise IncorrectLogin()

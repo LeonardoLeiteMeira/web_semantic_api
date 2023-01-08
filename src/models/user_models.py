@@ -2,9 +2,10 @@ from pydantic import BaseModel
 
 
 class User(BaseModel):
+    id:int|None
     email: str
     name: str
-    disabled: bool
+    disabled: bool|None = False
 
 class CreateUser(User):
     password:str
