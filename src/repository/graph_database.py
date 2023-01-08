@@ -5,7 +5,7 @@ class GraphDatabase(metaclass=Singleton):
     def __init__(self):
         self.sparql = SPARQLWrapper("http://localhost:3030/release/sparql")
     
-    async def get_socialmedias_from(self, user):
+    async def get_socialmedias_from(self, user_id:int):
         stringQuery = """
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -14,27 +14,24 @@ class GraphDatabase(metaclass=Singleton):
             PREFIX : <http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl#>
 
             SELECT ?socialName
-            WHERE {
-                ?subject rdf:type :Person;
-                        :Name ?name ;
-                        :HAS ?social .
-                ?social :Name ?socialName .
-            FILTER (?name = '""" +user+ """')
+                WHERE {
+                ?subject rdf:type :User;
+                        :email ?name ;
+                        :id ?id ;
+                        :IsOwnerOf ?social .
+                ?social :name ?socialName
+                FILTER (?id = '""" +user_id+ """')
+                }
             }
         """
         
         results = self._runQuery(stringQuery)
         return self._getSocialMedias(results["results"]["bindings"])
     
-    async def get_connections_from(self, user, connection, socialMedia):
-        connectionString = "?type rdfs:subPropertyOf* :RELATIONSHIP ."
+    async def get_connections_from(self, user_id:int, type:str|None):
 
-        filterString = "?name = '"+user+"'"
-        if(socialMedia != None):
-            filterString = filterString + " && ?connectionSocialMedia = '"+socialMedia+"'"
-        
-        if(connection != None):
-            connectionString = "?type rdfs:subPropertyOf* :"+connection+" ."
+        if type == None:
+            type = "Relationship"
 
         stringQuery = """
             PREFIX my: <http://www.mobile.com/model/>
@@ -44,22 +41,18 @@ class GraphDatabase(metaclass=Singleton):
             PREFIX owl: <http://www.w3.org/2002/07/owl#>
             PREFIX : <http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl#>
 
-            SELECT DISTINCT ?userConnectedName ?connectionSocialMedia ?userConnectedUsername
-            WHERE {
-                ?subject rdf:type :Person;
-                    :Name ?name ;
-                    :HAS	?social .
-                """+connectionString+"""
-                ?social :Name ?socialName	;
-                    ?type	?conections ;
-                    :Username ?username .
-                ?userConnected :HAS ?conections ;
-                    :Name	?userConnectedName .
-                ?conections :Username ?userConnectedUsername ;
-                    :Name	?connectionSocialMedia
-                            
-                FILTER ("""+filterString+""")
-            }
+            SELECT DISTINCT ?email ?id ?idConnection ?connectionEmail ?type
+                WHERE {
+                ?subject rdf:type :User;
+                        :email ?email ;
+                        :id ?id ;
+                        :HasRelationship ?relations .
+                ?relations :With ?connection .
+                ?relations rdf:type ?type .
+                ?connection :id ?idConnection ;
+                            :email ?connectionEmail
+                FILTER (?id = """+user_id+""" && ?type = :"""+type+""")
+                }
         """
         
         results = self._runQuery(stringQuery)
@@ -106,11 +99,7 @@ class GraphDatabase(metaclass=Singleton):
         response = self._getRecommendations(results["results"]["bindings"])
         return response
 
-    async def get_influence_level_from(self, user, socialMedia):
-        filterString = "?name = '"+user+"'"
-
-        if(socialMedia != None):
-            filterString = filterString + " && ?socialName = '"+socialMedia+"'"
+    async def get_influence_level_from(self, user_id:int):
 
         stringQuery = """
             PREFIX my: <http://www.mobile.com/model/>
@@ -120,18 +109,17 @@ class GraphDatabase(metaclass=Singleton):
             PREFIX owl: <http://www.w3.org/2002/07/owl#>
             PREFIX : <http://www.semanticweb.org/carlos/ontologies/2022/11/meta-social-media.owl#>
 
-            SELECT ?name (count ( distinct ?connections ) AS ?level)
+
+        SELECT (count ( distinct ?relations ) AS ?level)
             WHERE {
-                ?subject rdf:type :Person;
-                        :Name ?name ;
-                        :HAS	?social .
-                ?connections :INFLUENCE ?social .
-                ?social :Name ?socialName .
-                FILTER ("""+filterString+""")
-            }GROUP BY ?name
+                ?relations rdf:type :Influence .
+                ?relations :With ?user .
+                ?user :id ?id .
+                FILTER (?id = """+user_id+""")
+            }GROUP BY ?id
         """
         results = self._runQuery(stringQuery)
-        response = self._getLevel(results["results"]["bindings"], user)
+        response = self._getLevel(results["results"]["bindings"], str(user_id))
         return response
 
     def _runQuery(self, query):
@@ -165,16 +153,16 @@ class GraphDatabase(metaclass=Singleton):
             })
         return response
     
-    def _getLevel(self, results, name):
+    def _getLevel(self, results, id):
         if(len(results) == 0):
             return {
-                "user" : name,
+                "user" : id,
                 "influence_score" : 0
             }
 
         result = results[0]
         response ={
-            "user" : name,
+            "user" : id,
             "influence_score" : result["level"]["value"]
         }
         return response

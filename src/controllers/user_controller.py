@@ -15,16 +15,16 @@ async def get_social_medias(id:str):
     return await user_service.get_socialmedias_from_user(id)
 
 @user_router.get("/connections/{id}",response_model=list[ConnectionModel])
-async def get_user_connections(id:str, connection_type:str|None = None, social_media:str|None = None):
-    return await user_service.get_all_connections_from_user(id,connection_type,social_media)
+async def get_user_connections(id:int, type:str|None = None):
+    return await user_service.get_all_connections_from_user(id,type)
 
 @user_router.get("/sugestion/{id}",response_model=list[ConnectionModel])
 async def suggest_connections(id:str, connection_type:str|None = None, social_media:str|None = None):
     return await user_service.get_possible_connections(id,connection_type,social_media)
 
 @user_router.get("/influence_score/{id}",response_model=InfluenceScore)
-async def get_user_influence_score(id:str, social_media:str|None = None):
-    return await user_service.get_influence_score(id,social_media)
+async def get_user_influence_score(id:int):
+    return await user_service.get_influence_score(id)
 
 @user_router.post("/signup")
 async def create_user(new_user:CreateUser):

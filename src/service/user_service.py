@@ -9,17 +9,17 @@ class UserService:
         self.repository = UserRepository()
         self.auth_service = AuthService()
 
-    async def get_socialmedias_from_user(self, person_name:str):
-        return await self.repository.get_socialmedias_from_user(person_name)
+    async def get_socialmedias_from_user(self, user_id:int):
+        return await self.repository.get_socialmedias_from_user(user_id)
 
-    async def get_all_connections_from_user(self, person_name:str, connection_type:str|None = None, social_media:str|None = None):
-        return await self.repository.get_all_connections_from_user(person_name, connection_type, social_media)
+    async def get_all_connections_from_user(self, user_id:int, type:str|None = None):
+        return await self.repository.get_all_connections_from_user(user_id, type)
 
     async def get_possible_connections(self, person_name:str, connection_type:str|None = None, social_media:str|None = None):
         return await self.repository.get_possible_connections(person_name,connection_type,social_media)
 
-    async def get_influence_score(self,name:str,social_media:str):
-        return await self.repository.get_influence_score(name,social_media)
+    async def get_influence_score(self,user_id:int):
+        return await self.repository.get_influence_score(user_id)
 
     async def create_user(self, new_user:CreateUser):
         hashed_password = self.auth_service.hash_password(new_user.password)
