@@ -2,7 +2,6 @@ from models.user_models import CreateUser, User, UserAuth, UserDB
 from repository.user_repository import UserRepository
 from service.auth_service import AuthService
 from models.exception_models import IncorrectLogin
-import pandas as pd
 
 # class to do some convertions and apply business logic on repository data
 class UserService:
@@ -55,6 +54,6 @@ class UserService:
         user_db = await self.get_user_by_email(user_email)
         if self.auth_service.verify_password(password, user_db.hashed_password):
             token = self.auth_service.create_bearer_token(user_db.id,{})
-            return UserAuth(**user_db.__dict__ ,token_type="bearer",token=token)
+            return UserAuth(**user_db.__dict__ ,token_type="bearer",access_token=token)
         else:
             raise IncorrectLogin()

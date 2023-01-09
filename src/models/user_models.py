@@ -7,11 +7,13 @@ class User(BaseModel):
     name: str
     disabled: bool|None = False
 
-class CreateUser(User):
+class CreateUser(BaseModel):
+    email: str
+    name: str
     password:str
 
 class UserAuth(User):
-    token:str
+    access_token:str
     token_type:str
 
 class UserDB(User):
